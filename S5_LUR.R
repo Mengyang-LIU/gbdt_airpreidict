@@ -3,6 +3,7 @@ library(car)
 library(tidyverse)
 library(caret)
 library(ggplot2)
+
 df_am = cbind(all_AM %>% select(ends_with('_100')),point_urban_info[,-1])
 df_pm = cbind(all_PM %>% select(ends_with('_100')),point_urban_info[,-1])
 df_all = df_am
@@ -75,8 +76,6 @@ print(model)
 options(scipen=999)
 model %>% predict(cor_test1)
 cor_test11$prelur = model %>% predict(cor_test1)
-
-
 
 # gam
 
