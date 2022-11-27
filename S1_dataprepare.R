@@ -3,7 +3,7 @@ library(readxl)
 library(anytime)
 library(dplyr)
 library(stringr)
-setwd('/Users/liumengyang/Desktop/1')
+setwd('/Users/..')
 getwd()
 AM1030 = AM1030[,-15]
 rownames(pm25_1030)<-1:nrow(pm25_1030)
@@ -24,7 +24,6 @@ add_sep_time = function(gps_data){
   gps_data$S = str_sub(gps_data$Time, 7, 8)
   return(gps_data)
 }
-
 
 match_gps_pm25 = function(gps_data, pm25_data){
   gps_data$pm25  = NA
@@ -74,8 +73,6 @@ match_gps_co = function(gps_data, co_data){
   return(gps_data)  
 }
 
-
-
 match_gps_me = function(gps_data, me_data){
   gps_data$temp  = NA
   gps_data$RH  = NA
@@ -102,6 +99,7 @@ match_gps_me = function(gps_data, me_data){
   print(head(gps_data))
   return(gps_data)  
 }
+
 match_gps_back = function(gps_data, back_data){
   colnames(back_data)[2:3] = c('pm','co')
   gps_data$back_pm25  = NA
@@ -146,8 +144,7 @@ match_gps_back = function(gps_data, back_data){
   return(gps_data)  
 }
 
-
-setwd('/Users/liumengyang/Desktop/1/2020-10-30实测')
+setwd('/Users/..')
 GPS_CRS = st_read("/Users/liumengyang/Desktop/1/2020-10-30实测/2020-10-30_GPS/am_20-10-30 113801.gpx", layer = "track_points")[,-c(1,2,6:26)] 
 
 AM1030 = st_read("2020-10-30_GPS/am_20-10-30 113801.gpx", layer = "track_points")[,-c(1,2,6:26)] 
@@ -218,10 +215,7 @@ PM1030$back_co[which(PM1030$H =='17')] = back_1030$CO__[9]+(back_1030$CO__[10] -
 PM1030$back_co[which(PM1030$H =='18')] = back_1030$CO__[10]+(back_1030$CO__[11] - back_1030$CO__[10])/60*as.numeric(PM1030$M[which(PM1030$H =='18')])    
 
 
-
-
-
-setwd('/Users/liumengyang/Desktop/1/2020-11-03实测')
+setwd('/Users/..')
 AM1103 = st_read("2020-11-03_GPS/20-11-03 11.33.50.gpx", layer = "track_points")[,-c(1,2,6:26)] 
 PM1103 = st_read("2020-11-03_GPS/20-11-03 18.31.15.gpx", layer = "track_points")[,-c(1,2,6:26)]
 pm25_1103 = read.csv("2020-11-03滨江移动PM2.5/20201103污染物.csv")[,-1]
@@ -287,9 +281,7 @@ PM1103$back_co[which(PM1103$H =='16')] = back_1103$CO__[8]+(back_1103$CO__[9] - 
 PM1103$back_co[which(PM1103$H =='17')] = back_1103$CO__[9]+(back_1103$CO__[10] - back_1103$CO__[9])/60*as.numeric(PM1103$M[which(PM1103$H =='17')])    
 PM1103$back_co[which(PM1103$H =='18')] = back_1103$CO__[10]+(back_1103$CO__[11] - back_1103$CO__[10])/60*as.numeric(PM1103$M[which(PM1103$H =='18')])    
 
-
-
-setwd('/Users/liumengyang/Desktop/1/2020-11-04实测')
+setwd('/Users/..')
 AM1104 = st_read("2020-11-04_GPS/20-11-04 11.24.21.gpx", layer = "track_points")[,-c(1,2,6:26)] 
 PM1104 = st_read("2020-11-04_GPS/20-11-04 18.30.06.gpx", layer = "track_points")[,-c(1,2,6:26)]
 pm25_1104 = read.csv("2020-11-04滨江移动PM2.5/20201104污染物.csv")[,-1]
@@ -375,7 +367,6 @@ pm25_1110$M = str_sub(pm25_1110$Time, 4, 5)
 pm25_1110$S = str_sub(pm25_1110$Time, 7, 8)
 pm25_1110$Concentration = as.numeric(as.character(pm25_1110$Concentration))
 
-
 co_1110$Time = as.character(co_1110$时间)
 co_1110$Time[1:551] = apply(co_1110[c(1:551),], 1, function(x) paste0("0",x[10]))
 co_1110$H = str_sub(co_1110$Time, 1, 2)
@@ -403,7 +394,6 @@ PM1110 = match_gps_pm25(PM1110, pm25_1110)
 PM1110 = match_gps_co(PM1110, co_1110)
 PM1110 = match_gps_me(PM1110, metero_1110)
 PM1110 = match_gps_back(PM1110, back_1110)
-
 
 AM1110$back_pm25[which(AM1110$H =='09')] = back_1110$PM2.5__[1]+(back_1110$PM2.5__[2] - back_1110$PM2.5__[1])/60*as.numeric(AM1110$M[which(AM1110$H =='09')])    
 AM1110$back_pm25[which(AM1110$H =='10')] = back_1110$PM2.5__[2]+(back_1110$PM2.5__[3] - back_1110$PM2.5__[2])/60*as.numeric(AM1110$M[which(AM1110$H =='10')])    
