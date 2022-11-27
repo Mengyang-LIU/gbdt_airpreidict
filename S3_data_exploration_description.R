@@ -1,5 +1,5 @@
 library(ggplot2)
-setwd('/Users/liumengyang/Desktop/1/shp')
+setwd('/Users/..')
 # Create dummy data
 NA_AM1030 = na.omit(AM1030)
 NA_AM1030$track_seg_point_id
@@ -12,7 +12,6 @@ AM1030$temp_pm1 = AM1030$pm25/AM1030$temp_f
 AM1030$corr_f1 = 1
 AM1030[which(AM1030$temp>50),]$corr_f1  = 1+0.25*(AM1030[which(AM1030$temp>50),]$temp/100)^2/(1-AM1030[which(AM1030$temp>50),]$temp/100)
 AM1030$temp_pm2 = AM1030$pm25/AM1030$corr_f1/AM1030$temp_f 
-
 
 ggplot(NA_PM1030) +
   geom_line(aes(x=track_seg_point_id, y=pm25), color= 'grey') +
@@ -244,8 +243,7 @@ ggplot() +
     plot.title = element_text(size=14)
   ) +
   ggtitle("Background PM2.5 Concentration") +
-  theme_light()
-
+  theme_light(
 
 ggplot() +
   geom_line(data = agg_AM1030,aes(x=V1, y=backpm_100), color = 'red') +
@@ -340,8 +338,6 @@ ggplot() +
   ggtitle("RH") +
   theme_light()
 
-
-
 ggplot() +
   geom_line(data = agg_AM1030,aes(x=V1, y=pm25_100), color = 'red') +
   geom_line(data = agg_AM1103,aes(x=V1, y=pm25_100), color = 'red') +
@@ -357,7 +353,6 @@ ggplot() +
   ) +
   ggtitle("PM2.5 Concentration") +
   theme_light()
-
 
 df_am$V1 = c(1:nrow(df_am))
 df_pm$V1 = c(1:nrow(df_pm))
