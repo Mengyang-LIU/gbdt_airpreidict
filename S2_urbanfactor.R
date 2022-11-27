@@ -8,9 +8,9 @@ library(sf)
 # building height (mh)
 # height variation(bhv)
 
-road_test = read_sf('/Users/liumengyang/Desktop/1/路网/武汉路网.shp')
+road_test = read_sf('/Users/../路网.shp')
 
-building_df = read_sf('/Users/liumengyang/OneDrive/basic wuhan/wuhan_building.shp')
+building_df = read_sf('/Users/../building.shp')
 building_df$Height = as.numeric(building_df$Height)
 building_df = st_make_valid(building_df)
 st_area(building_df$geometry[1:5])*building_df$Height[1:5]
