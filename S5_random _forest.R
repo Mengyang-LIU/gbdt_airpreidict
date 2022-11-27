@@ -2,6 +2,7 @@ library(rsample)      # data splitting
 library(randomForest) # basic implementation
 library(ranger)       # a faster implementation of randomForest
 library(caret)        # an aggregator package for performing many machine learning models
+
 hyper_grid_2 <- expand.grid(
   mtry       = seq(1, 20, by = 1),
   node_size  = seq(3, 9, by = 2),
@@ -30,7 +31,6 @@ for(i in 1:nrow(hyper_grid_2)) {
 hyper_grid_2 %>% 
   dplyr::arrange(OOB_RMSE) %>%
   head(10)
-
 
 ames_randomForest <- randomForest(
   formula= backpm_100 ~ RH_100+temp_100+ws+mh_200+bhv_100+ca_200+ba_200+p15_200+p60_200+poi_inter_200+poi_bus_200+poi_metro_200+poi_rest_200+poi_resi_150+poi_off_200+poi_comm_200+svf+disr+rd1_200+rd2_100, 
