@@ -5,14 +5,13 @@ library(caret)        # an aggregator package for performing many machine learni
 library(pdp)          # model visualization
 library(ggplot2)      # model visualization
 library(lime)         # model visualization
-set.seed(123)
 library(dplyr)
 
-
+# for reproducibility
+set.seed(123)
 
 cor_test1 = na.omit(df_pm25[,c(4,6,7,8,9,11,18,22,26,30,34,38,42,46,50,53,58,60,63,64,68,70)])
 cor_test1 = na.omit(all_df[-STA_ID,c(5,7,13,17,21,25,29,33,37,41,44,49,53,54,55,59,61,64,66,67,68,69)])
-
 
 cor_test2 = na.omit(all_df[-STA_ID,c(5,7,10,14,21,22,29,33,35,41,45,49,53,54,55,56,63,65,66,67,68,69)])
 cor_test3 = na.omit(all_df[-STA_ID,c(5,7,13,17,21,25,29,33,37,41,44,49,53,54,55,59,61,66,67,68,69,75)])
@@ -35,8 +34,6 @@ ames_split2 <- initial_split(cor_test3, prop = .7)
 
 ames_train2 <- training(ames_split2)
 ames_test2  <- testing(ames_split2)
-# for reproducibility
-
 
 # train GBM model
 gbm.fit <- gbm(
