@@ -5,6 +5,8 @@ library(dplyr)
 library(stringr)
 setwd('/Users/..')
 getwd()
+
+# match the pollution, background pollution concentration, temperature and humidity monitoring, gps data.
 AM1030 = AM1030[,-15]
 rownames(pm25_1030)<-1:nrow(pm25_1030)
 remove(pm_1030)
@@ -145,7 +147,7 @@ match_gps_back = function(gps_data, back_data){
 }
 
 setwd('/Users/..')
-GPS_CRS = st_read("/Users/liumengyang/Desktop/1/2020-10-30实测/2020-10-30_GPS/am_20-10-30 113801.gpx", layer = "track_points")[,-c(1,2,6:26)] 
+GPS_CRS = st_read("/Users/../2020-10-30_GPS/am_20-10-30 113801.gpx", layer = "track_points")[,-c(1,2,6:26)] 
 
 AM1030 = st_read("2020-10-30_GPS/am_20-10-30 113801.gpx", layer = "track_points")[,-c(1,2,6:26)] 
 PM1030 = st_read("2020-10-30_GPS/pm_20-10-30 183150.gpx", layer = "track_points")[,-c(1,2,6:26)]
