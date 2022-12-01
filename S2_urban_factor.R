@@ -30,26 +30,26 @@ for (i in 1:nrow(building_df)){
   }
 }
 # poi
-poi_rest = read_sf('/Users/liumengyang/Desktop/1/gis_pic/rest_poi.shp')
+poi_rest = read_sf('/Users/../rest_poi.shp')
 poi_rest = st_transform(poi_rest,crs = st_crs(agg_point))
-poi_resi = read_sf('/Users/liumengyang/Desktop/1/gis_pic/residential_poi.shp')
+poi_resi = read_sf('/Users/../residential_poi.shp')
 poi_resi = st_transform(poi_resi,crs = st_crs(agg_point))
-poi_off = read_sf('/Users/liumengyang/Desktop/1/gis_pic/off_poi.shp')
+poi_off = read_sf('/Users/../off_poi.shp')
 poi_off = st_transform(poi_off,crs = st_crs(agg_point))
-poi_comm = read_sf('/Users/liumengyang/Desktop/1/gis_pic/comm_poi.shp')
+poi_comm = read_sf('/Users/../comm_poi.shp')
 poi_comm = st_transform(poi_comm,crs = st_crs(agg_point))
 
-poi_bus = read_sf('/Users/liumengyang/Desktop/1/gis_pic/bus_poi.shp')
+poi_bus = read_sf('/Users/../bus_poi.shp')
 poi_bus = st_transform(poi_trans,crs = st_crs(agg_point))
-poi_metro = read_sf('/Users/liumengyang/Desktop/1/gis_pic/metro_poi.shp')
+poi_metro = read_sf('/Users/../metro_poi.shp')
 poi_metro = st_transform(poi_metro,crs = st_crs(agg_point))
-poi_inter = read_sf('/Users/liumengyang/Desktop/1/gis_pic/intersection_poi.shp')
+poi_inter = read_sf('/Users/../intersection_poi.shp')
 poi_inter = st_transform(poi_inter,crs = st_crs(agg_point))
 
 # road density (rd)
-road_df = read_sf('/Users/liumengyang/OneDrive/CHIN/道路/first_road.shp')
+road_df = read_sf('/Users/../first_road.shp')
 road_df = st_transform(road_df,crs = st_crs(agg_point))
-road_df2 = read_sf('/Users/liumengyang/OneDrive/CHIN/道路/sec_road.shp')
+road_df2 = read_sf('/Users/../sec_road.shp')
 road_df2 = st_transform(road_df2,crs = st_crs(agg_point))
 
 agg_point_urban = function(point_file){
