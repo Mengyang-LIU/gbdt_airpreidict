@@ -2,6 +2,7 @@ library(units)
 library(sp)
 library(rgeos)
 library(sf)
+# calculate the urban form indices
 # construction area(ca)[m^2]
 # building area (ba)
 # porosity 0-15 15-60 (p15/p60)
